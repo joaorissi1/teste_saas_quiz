@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico de Maturidade SaaS</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+
+<header>
+    <h1>Análise de Maturidade</h1>
+    <p>Descubra o potencial de crescimento da sua empresa.</p>
+</header>
+
+<div class="container">
+    
+    <div id="result" class="section-card" style="text-align: center; display: none;">
+        
+        <div class="success-animation">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+            </svg>
+        </div>
+
+        <h2 style="color: var(--primary); font-family: 'Lora', serif; margin-bottom: 10px;">
+            Relatório enviado com sucesso!
+        </h2>
+        
+        <p style="color: var(--text-light); margin-bottom: 30px;">
+            Calculamos a maturidade da sua empresa com base nas suas respostas.
+        </p>
+
+        <div class="score-box">
+            <span class="score-label">Sua Pontuação</span>
+            <strong id="scoreValue" class="score-number">0/20</strong>
+        </div>
+
+        <h3 id="levelText" style="font-size: 1.4rem; margin-top: 20px; color: var(--text-dark);"></h3>
+        
+        <div class="restart-area">
+            <p>Deseja realizar uma nova avaliação?</p>
+            <button onclick="location.reload()" class="btn-restart">Refazer Teste</button>
+        </div>
+    </div>
+
+    <form id="quizForm">
+        
+        <div class="section-card">
+            <h2 class="section-title">Vamos começar</h2>
+            <div class="input-group">
+                <label for="company">Nome da Empresa</label>
+                <input type="text" id="company" class="text-input" placeholder="Ex: Minha Empresa Ltda" required>
+            </div>
+            <div class="input-group">
+                <label for="email">E-mail Corporativo</label>
+                <input type="email" id="email" class="text-input" placeholder="seu@email.com" required>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">1. Visão Estratégica</h2>
+            <div class="question-block">
+                <p class="question-text">Sua empresa possui um planejamento estratégico formalizado?</p>
+                <div class="options-grid">
+                    <label class="option-label"><input type="radio" name="q1" value="Sim" class="option-input" required>Sim</label>
+                    <label class="option-label"><input type="radio" name="q1" value="Parcialmente" class="option-input">Parcialmente</label>
+                    <label class="option-label"><input type="radio" name="q1" value="Não" class="option-input">Não</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <p class="question-text">As metas são comunicadas e acompanhadas por todos?</p>
+                <div class="options-grid">
+                    <label class="option-label"><input type="radio" name="q2" value="Sim" class="option-input" required>Sim</label>
+                    <label class="option-label"><input type="radio" name="q2" value="Parcialmente" class="option-input">Parcialmente</label>
+                    <label class="option-label"><input type="radio" name="q2" value="Não" class="option-input">Não</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">2. Governança e Processos</h2>
+            <div class="question-block">
+                <p class="question-text">Existem políticas e normas documentadas para processos críticos?</p>
+                <div class="options-grid">
+                    <label class="option-label"><input type="radio" name="q3" value="Sim" class="option-input" required>Sim</label>
+                    <label class="option-label"><input type="radio" name="q3" value="Parcialmente" class="option-input">Parcialmente</label>
+                    <label class="option-label"><input type="radio" name="q3" value="Não" class="option-input">Não</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <p class="question-text">Há mecanismos de monitoramento e revisão dos processos?</p>
+                <div class="options-grid">
+                    <label class="option-label"><input type="radio" name="q4" value="Sim" class="option-input" required>Sim</label>
+                    <label class="option-label"><input type="radio" name="q4" value="Parcialmente" class="option-input">Parcialmente</label>
+                    <label class="option-label"><input type="radio" name="q4" value="Não" class="option-input">Não</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">3. Controle e Indicadores</h2>
+            <div class="question-block">
+                <p class="question-text">Sua empresa utiliza indicadores-chave (KPIs)?</p>
+                <div class="options-grid">
+                    <label class="option-label"><input type="radio" name="q5" value="Sim" class="option-input" required>Sim</label>
+                    <label class="option-label"><input type="radio" name="q5" value="Parcialmente" class="option-input">Parcialmente</label>
+                    <label class="option-label"><input type="radio" name="q5" value="Não" class="option-input">Não</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <p class="question-text">Os relatórios gerenciais são atualizados em tempo hábil?</p>
+                <div class="options-grid">
+                    <label class="option-label"><input type="radio" name="q6" value="Sim" class="option-input" required>Sim</label>
+                    <label class="option-label"><input type="radio" name="q6" value="Parcialmente" class="option-input">Parcialmente</label>
+                    <label class="option-label"><input type="radio" name="q6" value="Não" class="option-input">Não</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">4. Tecnologia e Automação</h2>
+            <div class="question-block">
+                <p class="question-text">Há integração entre sistemas (ERP, BI, CRM)?</p>
+                <div class="options-grid">
+                    <label class="option-label"><input type="radio" name="q7" value="Sim" class="option-input" required>Sim</label>
+                    <label class="option-label"><input type="radio" name="q7" value="Parcialmente" class="option-input">Parcialmente</label>
+                    <label class="option-label"><input type="radio" name="q7" value="Não" class="option-input">Não</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <p class="question-text">Processos repetitivos já foram automatizados?</p>
+                <div class="options-grid">
+                    <label class="option-label"><input type="radio" name="q8" value="Sim" class="option-input" required>Sim</label>
+                    <label class="option-label"><input type="radio" name="q8" value="Parcialmente" class="option-input">Parcialmente</label>
+                    <label class="option-label"><input type="radio" name="q8" value="Não" class="option-input">Não</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">5. Pessoas e Cultura</h2>
+            <div class="question-block">
+                <p class="question-text">Existe um programa estruturado de capacitação?</p>
+                <div class="options-grid">
+                    <label class="option-label"><input type="radio" name="q9" value="Sim" class="option-input" required>Sim</label>
+                    <label class="option-label"><input type="radio" name="q9" value="Parcialmente" class="option-input">Parcialmente</label>
+                    <label class="option-label"><input type="radio" name="q9" value="Não" class="option-input">Não</label>
+                </div>
+            </div>
+            <div class="question-block">
+                <p class="question-text">A cultura organizacional incentiva inovação?</p>
+                <div class="options-grid">
+                    <label class="option-label"><input type="radio" name="q10" value="Sim" class="option-input" required>Sim</label>
+                    <label class="option-label"><input type="radio" name="q10" value="Parcialmente" class="option-input">Parcialmente</label>
+                    <label class="option-label"><input type="radio" name="q10" value="Não" class="option-input">Não</label>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" id="btnSubmit" class="btn-submit">Gerar Diagnóstico</button>
+        
+        <p style="text-align: center; margin-top: 20px; color: #999; font-size: 0.85rem;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            Ambiente Seguro.
+        </p>
+    </form>
+</div>
+
+<script src="script.js?v=2"></script>
+</body>
+</html>
