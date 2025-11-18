@@ -1,199 +1,240 @@
 :root {
-    /* Paleta Valon Consult (Gold & Dark Grey) */
-    --bg-color: #F4F4F6; /* Cinza gelo corporativo */
-    --card-bg: #FFFFFF;
+    /* --- Paleta Dark Premium (Valon Gold) --- */
     
-    /* A Cor principal extraída da Logo (Dourado Valon) */
-    --primary: #E69B28; 
+    /* Fundos */
+    --bg-page: #121212;       /* Preto profundo para o fundo da página */
+    --bg-card: #1E1E1E;       /* Cinza chumbo elegante para os cards */
+    --bg-input: #2C2C2C;      /* Fundo dos inputs e botões */
     
-    /* Um tom mais escuro para quando passar o mouse */
-    --primary-hover: #C4821D;
+    /* Dourado Principal (Baseado na logo) */
+    --primary: #E69B28;       
+    --primary-hover: #FFB347; /* Dourado mais claro para hover */
     
-    /* Texto Chumbo (Baseado no fundo da logo) */
-    --text-dark: #333333;
+    /* Textos */
+    --text-main: #F0F0F0;     /* Branco gelo para leitura clara */
+    --text-muted: #B0B0B0;    /* Cinza claro para textos secundários */
+    --text-dark: #121212;     /* Preto para usar quando o fundo for dourado */
     
-    --text-light: #666666;
-    --border-soft: #E0E0E0;
-    
-    /* Cor de fundo suave para seleções (Amarelo bem clarinho) */
-    --accent-soft: #FFF8EB; 
-    
-    --shadow: 0 12px 24px rgba(0,0,0,0.05);
-    --radius: 8px; /* Reduzi um pouco o arredondamento para ficar mais sério */
-    --transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Bordas e Sombras */
+    --border-gold: #E69B28;   
+    --shadow: 0 10px 30px rgba(0,0,0,0.5); /* Sombra mais dramática */
+    --radius: 6px;            /* Cantos levemente arredondados (sério) */
+    --transition: all 0.25s ease-in-out;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: 'Nunito', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-dark);
+    background-color: var(--bg-page);
+    color: var(--text-main);
     line-height: 1.6;
-    padding-bottom: 60px;
+    padding-bottom: 80px;
 }
 
+/* --- Cabeçalho --- */
 header {
     text-align: center;
-    padding: 60px 20px 40px;
+    padding: 70px 20px 50px;
 }
 header h1 {
     font-family: 'Lora', serif;
-    font-size: 2.5rem;
-    color: var(--text-dark); /* Mudei para escuro para contraste melhor */
-    margin-bottom: 5px;
-    letter-spacing: 1px; /* Um pouco mais elegante */
+    font-size: 2.8rem;
+    color: var(--primary); /* Título Dourado */
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
-header p { color: var(--text-light); }
+header p { 
+    color: var(--text-muted); 
+    font-size: 1.1rem;
+}
 
 .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
 
-/* Cards */
+/* --- Cards (Caixas das perguntas) --- */
 .section-card {
-    background: var(--card-bg);
+    background: var(--bg-card);
     border-radius: var(--radius);
     padding: 40px;
     box-shadow: var(--shadow);
     margin-bottom: 30px;
-    border: 1px solid var(--border-soft);
-    border-top: 4px solid var(--primary); /* Detalhe dourado no topo dos cards */
+    border: 1px solid #333; /* Borda sutil escura */
+    border-top: 3px solid var(--primary); /* Topo Dourado */
 }
 
 .section-title {
     font-family: 'Lora', serif;
-    font-size: 1.4rem;
-    color: var(--text-dark);
+    font-size: 1.5rem;
+    color: var(--primary); /* Título das seções em Dourado */
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 1px solid var(--border-soft);
+    border-bottom: 1px solid #333;
 }
 
-/* Inputs */
-.input-group { margin-bottom: 20px; }
-.input-group label { display: block; font-weight: 700; margin-bottom: 8px; }
+/* --- Inputs de Texto (Nome/Email) --- */
+.input-group { margin-bottom: 25px; }
+.input-group label { 
+    display: block; 
+    font-weight: 700; 
+    margin-bottom: 10px; 
+    color: var(--text-main);
+}
+
 .text-input {
-    width: 100%; padding: 16px;
-    border: 1px solid var(--border-soft);
-    border-radius: 6px; /* Bordas mais quadradas = mais corporativo */
+    width: 100%; 
+    padding: 18px;
+    border: 1px solid var(--border-gold); /* Borda Dourada Fina */
+    border-radius: var(--radius);
     font-family: 'Nunito', sans-serif;
     font-size: 1rem;
-    background: #FAFAFA;
+    background: var(--bg-input); /* Fundo escuro */
+    color: var(--text-main);     /* Texto branco */
     transition: var(--transition);
 }
+
+.text-input::placeholder { color: #666; }
+
 .text-input:focus {
     outline: none; 
-    border-color: var(--primary); 
-    background: #fff;
-    box-shadow: 0 0 0 3px rgba(230, 155, 40, 0.15); /* Glow dourado suave */
+    box-shadow: 0 0 0 2px rgba(230, 155, 40, 0.3); 
+    background: #333;
 }
 
-/* Questões e Botões Selecionáveis */
-.question-block { margin-bottom: 35px; }
-.question-text { font-weight: 600; margin-bottom: 15px; color: #444; }
+/* --- Perguntas --- */
+.question-block { margin-bottom: 40px; }
+.question-text { 
+    font-weight: 600; 
+    margin-bottom: 15px; 
+    color: var(--text-main);
+    font-size: 1.1rem;
+}
 
 .options-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 12px;
+    gap: 15px;
 }
 
+/* --- BOTÕES DE OPÇÃO (Onde a mágica acontece) --- */
 .option-label {
-    display: flex; align-items: center; justify-content: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
     padding: 16px;
-    border: 1px solid var(--border-soft);
-    border-radius: 6px;
+    
+    /* O PEDIDO: Fundo preto acinzentado + Borda Dourada */
+    background-color: var(--bg-input); 
+    border: 1px solid var(--border-gold); 
+    
+    border-radius: var(--radius);
     cursor: pointer;
-    font-weight: 600; color: var(--text-light);
+    font-weight: 600; 
+    color: var(--text-muted); /* Texto cinza claro quando não selecionado */
     transition: var(--transition);
-    background: #fff;
     position: relative;
 }
 
-/* Hover */
+/* Hover (Passar o mouse) */
 .option-label:hover {
-    border-color: var(--primary);
+    border-color: var(--primary-hover);
     color: var(--primary);
-    background-color: var(--accent-soft);
+    box-shadow: 0 0 10px rgba(230, 155, 40, 0.1);
 }
 
-/* ESTADO SELECIONADO (Dourado Cheio) */
+/* --- ESTADO SELECIONADO --- */
+/* Quando clica, fica PREENCHIDO de dourado com letra preta (Alto contraste luxuoso) */
 .option-label:has(.option-input:checked) {
     background-color: var(--primary) !important; 
-    color: #ffffff !important; 
+    color: var(--text-dark) !important; /* Texto preto para ler no dourado */
     border-color: var(--primary) !important;
-    box-shadow: 0 5px 15px rgba(230, 155, 40, 0.3);
+    box-shadow: 0 0 15px rgba(230, 155, 40, 0.4);
     transform: translateY(-2px);
+    font-weight: 800;
 }
 
 .option-input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-    height: 0;
-    width: 0;
+    height: 0; width: 0;
 }
 
-/* Botão Enviar */
+/* --- Botão Enviar (Principal) --- */
 .btn-submit {
     display: block; width: 100%;
-    background-color: var(--text-dark); /* Botão preto/cinza chique */
-    color: white;
-    font-family: 'Nunito', sans-serif; font-size: 1.2rem; font-weight: 700;
-    padding: 18px; border: none; border-radius: 6px;
-    cursor: pointer; transition: var(--transition);
-    margin-top: 10px;
-    text-transform: uppercase; /* Mais autoridade */
-    letter-spacing: 1px;
+    background-color: transparent; /* Fundo transparente */
+    border: 2px solid var(--primary); /* Borda Grossa Dourada */
+    color: var(--primary);
+    font-family: 'Nunito', sans-serif; 
+    font-size: 1.2rem; 
+    font-weight: 800;
+    padding: 20px; 
+    border-radius: var(--radius);
+    cursor: pointer; 
+    transition: var(--transition);
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
+
 .btn-submit:hover {
-    background-color: var(--primary); /* Fica dourado ao passar o mouse */
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    background-color: var(--primary); /* Preenche de dourado no hover */
+    color: var(--text-dark);
+    box-shadow: 0 0 20px rgba(230, 155, 40, 0.4);
 }
 .btn-submit:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+    border-color: #555; color: #555; background: transparent; cursor: not-allowed; box-shadow: none;
 }
 
-/* Área de Sucesso e Animação */
+/* --- Área de Resultado --- */
 .score-box {
-    background: var(--accent-soft); /* Fundo amarelo clarinho */
-    padding: 20px;
-    border-radius: 8px;
+    background: #2C2C2C;
+    padding: 25px;
+    border-radius: var(--radius);
     display: inline-block;
-    min-width: 200px;
-    margin-top: 10px;
-    border: 1px solid rgba(230, 155, 40, 0.2);
+    min-width: 220px;
+    margin-top: 15px;
+    border: 1px solid var(--primary);
 }
 
-/* Estilo do Resumo do Diagnóstico */
+/* Estilo do Texto de Feedback (Resumo) */
 #summaryText {
-    color: var(--text-dark);
+    color: var(--text-main);
     font-family: 'Nunito', sans-serif;
     font-size: 1.1rem;
-    font-weight: 500;
-    line-height: 1.6;
-    margin: 25px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-left: 4px solid var(--primary);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    font-weight: 400;
+    line-height: 1.7;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #181818; /* Fundo bem escuro */
+    border-left: 4px solid var(--primary); /* Barra lateral dourada */
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
     border-radius: 4px;
     max-width: 100%;
     text-align: left;
 }
 
-.score-label { display: block; font-size: 0.85rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
-.score-number { font-size: 3rem; color: var(--primary); display: block; line-height: 1; }
+.score-label { display: block; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; }
+.score-number { font-size: 3.5rem; color: var(--primary); display: block; line-height: 1; font-family: 'Lora', serif; }
 
-.restart-area { margin-top: 40px; border-top: 1px solid var(--border-soft); padding-top: 20px; }
-.btn-restart { background: #999; color: white; border: none; padding: 10px 25px; border-radius: 6px; cursor: pointer; font-size: 1rem; font-weight: 600; }
-.btn-restart:hover { background: var(--text-dark); }
+.restart-area { margin-top: 50px; border-top: 1px solid #333; padding-top: 30px; }
+.btn-restart { 
+    background: #333; 
+    color: #fff; 
+    border: 1px solid #555; 
+    padding: 12px 30px; 
+    border-radius: var(--radius); 
+    cursor: pointer; 
+    font-size: 1rem; font-weight: 600; 
+    transition: var(--transition);
+}
+.btn-restart:hover { background: #444; border-color: #fff; }
 
 /* Animação do Check */
-.success-animation { margin: 0 auto 20px; width: 80px; height: 80px; }
-.checkmark { width: 80px; height: 80px; border-radius: 50%; display: block; stroke-width: 2; stroke: #fff; stroke-miterlimit: 10; box-shadow: inset 0px 0px 0px var(--primary); animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both; }
-.checkmark__circle { stroke-dasharray: 166; stroke-dashoffset: 166; stroke-width: 2; stroke-miterlimit: 10; stroke: var(--primary); fill: none; animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }
+.success-animation { margin: 0 auto 25px; width: 80px; height: 80px; }
+.checkmark { width: 80px; height: 80px; border-radius: 50%; display: block; stroke-width: 2; stroke: var(--bg-card); stroke-miterlimit: 10; box-shadow: inset 0px 0px 0px var(--primary); animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both; }
+.checkmark__circle { stroke-dasharray: 166; stroke-dashoffset: 166; stroke-width: 2; stroke-miterlimit: 10; stroke: var(--bg-card); fill: none; animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }
 .checkmark__check { transform-origin: 50% 50%; stroke-dasharray: 48; stroke-dashoffset: 48; animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards; }
 
 @keyframes stroke { 100% { stroke-dashoffset: 0; } }
@@ -202,6 +243,7 @@ header p { color: var(--text-light); }
 
 /* Mobile */
 @media (max-width: 600px) {
-    .section-card { padding: 25px; }
+    .section-card { padding: 25px 20px; }
     .options-grid { grid-template-columns: 1fr; }
+    header h1 { font-size: 2rem; }
 }
