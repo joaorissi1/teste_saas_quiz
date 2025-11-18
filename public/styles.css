@@ -49,6 +49,21 @@ header p {
     color: var(--text-muted); 
     font-size: 1.1rem;
 }
+/* --- Estilo da Logo no Cabeçalho --- */
+.header-logo {
+    max-width: 280px; /* Largura máxima para a logo */
+    height: auto;     /* Mantém a proporção */
+    margin-bottom: 30px; /* Espaço entre a logo e o título */
+    opacity: 0.9;     /* Levemente mais suave que o 100% */
+}
+
+/* Ajustes para telas menores (opcional) */
+@media (max-width: 600px) {
+    .header-logo {
+        max-width: 200px; /* Logo menor em mobile */
+        margin-bottom: 20px;
+    }
+}
 
 .container { max-width: 720px; margin: 0 auto; padding: 0 20px; }
 
