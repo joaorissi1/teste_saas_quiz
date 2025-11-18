@@ -28,11 +28,20 @@ const calculateMaturity = (answers) => {
     });
 
     let level = '';
-    if (score <= 7) level = 'Maturidade Inicial';
-    else if (score <= 14) level = 'Maturidade em Desenvolvimento';
-    else level = 'Maturidade Avançada';
+   let summary = ''; 
+    if (score <= 7) {
+        level = 'Maturidade Inicial';
+        summary = 'Sua empresa precisa organizar os processos básicos. O foco agora deve ser documentar rotinas e definir metas claras.';
+    } else if (score <= 14) {
+        level = 'Maturidade em Desenvolvimento';
+        summary = 'Você já tem uma base sólida. O próximo passo é integrar seus sistemas e começar a usar dados para tomar decisões.';
+    } else {
+        level = 'Maturidade Avançada';
+        summary = 'Excelente! Sua gestão é eficiente. O foco agora é inovação, cultura organizacional e automação total.';
+    }
 
-    return { score, level };
+    // Retorna o score, o nível E o resumo
+    return { score, level, summary };
 };
 
 // --- ROTA DA API ---
@@ -70,7 +79,8 @@ app.post('/api/submit-quiz', async (req, res) => {
         res.status(200).json({ 
             success: true, 
             score: result.score, 
-            level: result.level 
+            level: result.level, 
+            summary : result.summary
         });
 
     } catch (err) {

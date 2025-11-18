@@ -144,6 +144,21 @@ header p { color: var(--text-light); }
     min-width: 200px;
     margin-top: 10px;
 }
+
+/* --- Estilo do Resumo do Diagnóstico --- */
+#summaryText {
+    color: var(--text-dark);       /* Cor escura para leitura fácil */
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;             /* Um pouco maior que o normal */
+    font-weight: 600;              /* Negrito suave */
+    line-height: 1.6;
+    margin: 25px auto;             /* Espaçamento em cima e embaixo */
+    padding: 20px;
+    background-color: #f8f9fa;     /* Fundo cinza bem clarinho para destaque */
+    border-left: 5px solid var(--primary); /* Uma barra verde elegante na esquerda */
+    border-radius: 8px;
+    max-width: 90%;                /* Para não encostar nas bordas */
+}
 .score-label { display: block; font-size: 0.85rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
 .score-number { font-size: 3rem; color: var(--primary); display: block; line-height: 1; }
 
