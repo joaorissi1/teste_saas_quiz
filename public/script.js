@@ -4,12 +4,10 @@ document.getElementById('quizForm').addEventListener('submit', async function(e)
     const btn = document.getElementById('btnSubmit');
     const originalText = btn.innerText;
     
-    // Feedback de processamento
     btn.innerText = "Enviando respostas...";
     btn.style.opacity = "0.7";
     btn.disabled = true;
 
-    // Coleta os dados
     const formData = new FormData(this);
     const responses = [];
     for (let i = 1; i <= 10; i++) {
@@ -23,8 +21,7 @@ document.getElementById('quizForm').addEventListener('submit', async function(e)
     };
 
     try {
-        // --- ALTERAÇÃO PARA PRODUÇÃO (HOSTINGER) ---
-        // Removemos "http://localhost:8080" e deixamos apenas a barra "/"
+        // Caminho relativo para funcionar no Render e Local
         const response = await fetch('/api/submit-quiz', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -34,7 +31,6 @@ document.getElementById('quizForm').addEventListener('submit', async function(e)
         const data = await response.json();
 
         if (data.success) {
-            // Sucesso: Oculta form e Mostra resultado
             document.getElementById('quizForm').style.display = 'none';
             const resultDiv = document.getElementById('result');
             
@@ -42,8 +38,17 @@ document.getElementById('quizForm').addEventListener('submit', async function(e)
             
             resultDiv.style.display = 'block';
             resultDiv.style.opacity = 0;
+
+            // --- PREENCHIMENTO DOS DADOS ---
+            document.getElementById('scoreValue').innerText = data.score + "/20";
+            document.getElementById('levelText').innerText = data.level;
             
-            // Fade-in manual simples
+            // AQUI ESTÁ A MÁGICA QUE FALTAVA:
+            if (document.getElementById('summaryText')) {
+                document.getElementById('summaryText').innerText = data.summary; 
+            }
+            // -------------------------------
+            
             let opacity = 0;
             const fadeIn = setInterval(() => {
                 if (opacity >= 1) clearInterval(fadeIn);
@@ -51,9 +56,6 @@ document.getElementById('quizForm').addEventListener('submit', async function(e)
                 opacity += 0.1;
             }, 30);
 
-            // Preenche os dados
-            document.getElementById('scoreValue').innerText = data.score + "/20";
-            document.getElementById('levelText').innerText = data.level;
         } else {
             alert('Erro: ' + data.error);
             btn.innerText = originalText;
@@ -62,7 +64,7 @@ document.getElementById('quizForm').addEventListener('submit', async function(e)
         }
     } catch (error) {
         console.error(error);
-        alert('Erro de conexão. Tente novamente mais tarde.');
+        alert('Erro de conexão.');
         btn.innerText = originalText;
         btn.disabled = false;
         btn.style.opacity = "1";

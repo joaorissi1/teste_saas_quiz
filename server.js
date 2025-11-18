@@ -80,7 +80,7 @@ app.post('/api/submit-quiz', async (req, res) => {
             success: true, 
             score: result.score, 
             level: result.level, 
-            summary : result.summary
+            summary: result.summary
         });
 
     } catch (err) {
